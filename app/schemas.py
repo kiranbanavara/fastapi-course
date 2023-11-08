@@ -1,4 +1,4 @@
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel, EmailStr, ConfigDict, ValidationError
 from datetime import datetime
 from typing import Optional
 
@@ -58,6 +58,7 @@ class Token(BaseModel):
 
 
 class TokenData(BaseModel):
+    model_config = ConfigDict(coerce_numbers_to_str=True)
     id: Optional[str] = None
 
 
